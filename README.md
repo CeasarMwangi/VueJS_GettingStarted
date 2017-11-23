@@ -136,3 +136,48 @@ npm test
 ```
 
 Checkout the [guide](http://.../.../) and [docs for vue-loader](http://.../...).
+
+# Create a repo for a new project
+``` bash
+# Creates a directory for your project called "Hello-World" in your user directory
+mkdir ~/Hello-World
+
+# Changes the current working directory to your newly created directory
+cd ~/Hello-World
+
+# create a file, named blabla.html
+touch blabla.html
+
+# Sets up the necessary Git files
+git init
+
+# Stages your blabla.html file, adding it to the list of files to be committed
+git add blabla.html
+
+# Commits your files, adding the message 
+git commit -m 'first committttt'
+
+# Creates a remote named "origin" pointing at your GitHub repository
+git remote add origin https://github.com/username/Hello-World.git
+
+# Sends your commits in the "master" branch to GitHub
+git push -u origin master
+
+#creates a new project on GitHub with the name of current directory
+git create -d "My new thing"
+```
+# @TODO: try it out
+``` bash
+
+#
+git init
+
+#
+git add . && git commit -m "It begins."
+
+#creates a new project on GitHub with the name of current directory
+git create -d "My new thing"
+
+#
+git push origin master
+```
