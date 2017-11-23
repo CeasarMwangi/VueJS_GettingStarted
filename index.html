@@ -94,37 +94,80 @@ a = {{a}}
     </hook-item>
 </ol>
 
+<h4> mustaches syntax and v-html</h4>
+  <p>Using mustaches: {{ rawHtml }}</p>
+<p>Using v-html directive: <span v-html="rawHtml"></span></p>
 
+  <hr>
+  <h3>Attributes</h3>
+
+<p>Mustaches cannot be used inside HTML attributes. Instead, use a v-bind directive:</p>
+<div v-bind:id="dynamicId">
+  <p>Using v-bind directive here: my id attribute is {{dynamicId}}</p>
+</div>
+In the case of boolean attributes, where their mere existence implies true, v-bind works a little differently. In this example:
+<button v-bind:disabled="isButtonDisabled">Button</button>
+If isButtonDisabled has the value of null, undefined, or false, the disabled attribute will not even be included in the rendered button element.
+  <hr>
+  <h4>Using JavaScript Expressions</h4>
+<p>Vue.js actually supports the full power of JavaScript expressions inside all data bindings:</p>
+{{ kanjanumber + 1 }}
+{{ kanjaok ? 'YES' : 'NO' }}
+{{ funnymessage.split('').reverse().join('') }}
+<div v-bind:id="'list-' + funnymessage"> funnymessage</div>
+  <hr>
+  <h3>Directives</h3>
+<p>
+Directives are special attributes with the v- prefix. Directive attribute values are expected to be a single JavaScript expression (with the exception for v-for, which will be discussed later). A directive’s job is to reactively apply side effects to the DOM when the value of its expression changes.</p>
+<p v-if="seen">Now you see me becouse of v-if= view the source code!!!!</p>
+<p>Here, the v-if directive would remove/insert the p element based on the truthiness of the value of the expression seen.</p>
+
+<h4>Arguments</h4>
+
+<p>Some directives can take an “argument”, denoted by a colon after the directive name. For example, the v-bind directive is used to reactively update an HTML attribute:
+<a v-bind:href="url"> ...here we v-bind:href  </a>
+<p>Here href is the argument, which tells the v-bind directive to bind the element’s href attribute to the value of the expression url.</p>
+Another example is the v-on directive, which listens to DOM events:
+<a v-on:click="doSomething"> CLICK ME!!!! v-on:click...Here the argument doSomething, is the event name to listen to. </a>
+
+
+<h4>
+Modifiers
+</h4>
+<p>
+Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the .prevent modifier in <b>v-on:submit.prevent=</b>  tells the v-on directive to call event.preventDefault() on the triggered event:</p>
+<form v-on:submit.prevent="onSubmit"> ...here is my form <br>
+  <input type="submit" name="Send a message to Kanja"> </form>
+<p>other examples of modifiers:<b> v-on </b>and <b> v-model</b>, when we explore those features.</p>
+<h4>Shorthands</h4>
+<p>
+The v- prefix serves as a visual cue for identifying Vue-specific attributes in your templates. Vue.js provides special shorthands for two of the most often used directives.</p>
+
+<h5>binding :href</h5>
+<p>
+<!-- full syntax -->
+<a v-bind:href="url"> ... full syntax for v-bind:href=</a>
+</p>
+<p>
+<!-- shorthand -->
+<a :href="url"> ... shorthand syntax for v-bind:href= is :href=</a>
+</p>
+<h5>click event</h5>
+<p>
+
+<!-- full syntax -->
+<a v-on:click="doSomething"> ... full syntax for v-on:click=</a>
+</p>
+<p>
+<!-- shorthand -->
+<a @click="doSomething"> ... shorthand syntax for v-on:click= is @click=</a>
+</p>
   </div><!-- END example -->
 
 
   <hr>
-
-  <hr>
+  
     <hr>
-
-
-  <hr>
-
-  <hr>
-    <hr>
-
-
-  <hr>
-
-  <hr>
-    <hr>
-
-
-  <hr>
-
-  <hr>
-    <hr>
-
-
-  <hr>
-
-  <hr>
 
 <script type="text/javascript">
   /*#########################VUE COMPONENTS##################################*/
@@ -196,7 +239,15 @@ hookList: [
       { id: 5, text: 'updated' },
       { id: 6, text: 'beforeDestroy' },
       { id: 7, text: 'destroyed' }
-    ]
+    ],
+    rawHtml: '<span style="color:red">The color of this text should be red!!</span>',
+    dynamicId:'id-kanja',
+    isButtonDisabled:true,
+    funnymessage:'my-kanja',
+    kanjanumber:100,
+    kanjaok:true,
+    seen:true,
+    url:'kanja.com'
 }
 
 var vm2 = new Vue({
@@ -233,6 +284,14 @@ var vm2 = new Vue({
   destroyed: function () {//This is a hook 
     // `this` points to the vm instance
     console.log('destroyed')
+  },
+  methods:{
+    doSomething: function(){
+      alert('doSomething was invoked!!!!!!!!!!!');
+    },
+    onSubmit:function(){
+      alert('YOU HAVE SUBMITED THE FORM!!!!!!');
+    }
   }
 })
 // instance properties and methods

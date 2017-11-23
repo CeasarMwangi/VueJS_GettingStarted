@@ -181,3 +181,32 @@ git create -d "My new thing"
 #
 git push origin master
 ```
+
+# Template Syntax
+## Data binding
+Data binding is text interpolation using the “Mustache” syntax {{}}
+``` bash
+#Data binding
+<span>Message: {{ msg }}</span>
+
+#one-time interpolations that do not update on data change using the v-once directive, 
+NB: This also affects any binding on the same node:
+<span v-once>This will never change: {{ msg }}</span>
+```
+##In order to output real HTML, use the v-html directive:
+``` bash
+#Using mustaches
+p>Using mustaches: {{ rawHtml }}</p>
+
+#Using v-html directive
+<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+Using mustaches: <span style="color: red">This should be red.</span>
+Using v-html directive: This should be red.
+
+```
+## Attributes
+Mustaches cannot be used inside HTML attributes. Instead, use a v-bind directive:
+<div v-bind:id="dynamicId"></div>
+In the case of boolean attributes, where their mere existence implies true, v-bind works a little differently. In this example:
+<button v-bind:disabled="isButtonDisabled">Button</button>
+If isButtonDisabled has the value of null, undefined, or false, the disabled attribute will not even be included in the rendered <button> element.
