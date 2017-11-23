@@ -1,4 +1,6 @@
 
+cd C:/xampp/htdocs/VueJS_PROJECTS/KanjaVueJS_GettingStarted
+
 Vue Data and Methods
 ===============================
 When a Vue instance is created, it adds all the properties found in its data object to Vue’s reactivity system. 
@@ -180,6 +182,12 @@ git create -d "My new thing"
 
 #
 git push origin master
+
+# setting git globals
+git config --global user.name "Your Name"
+# setting git globals
+git config --global user.email you@example.com
+
 ```
 
 # Template Syntax
