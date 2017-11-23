@@ -1,4 +1,4 @@
-===============================
+
 Vue Data and Methods
 ===============================
 When a Vue instance is created, it adds all the properties found in its data object to Vue’s reactivity system. 
@@ -9,7 +9,7 @@ That means if you add a new property, then changes to it will not trigger any vi
 If you know you’ll need a property later, but it starts out empty or non-existent, you’ll need to set some initial value
 
 
-==============================
+
 instance properties and methods
 ==============================
 These are prefixed with $ to differentiate them from user-defined properties. For example:
@@ -27,13 +27,14 @@ vm.$watch('a', function (newValue, oldValue) {
 
 
 
-==============================
+
 Instance Lifecycle Hooks
+==============================
 1. created
 2. mounted
 3. updated
 4. destroyed.
-==============================
+
 new Vue({
   data: {
     a: 1
@@ -45,37 +46,43 @@ new Vue({
 })
 
 
-==============================
---git
-==============================
+# git
 >git init
 >git clone
+
+# git-commit - Record changes to the repository
+
 >git commit
+>git-commit 
+>git commit -m "message"
 
-----------------------------
-==ADDING FILES
-----------------------------
+# This line will add and commit all changed and added files to repository.
+>git add . && git commit -am "comment"
+
+
+# ADDING FILES
 >git add .
+>git add hello.py
 >git add Documentation/\*.txt
->git add git-*.sh
+>git add git-\*.txt
 
----------------------------------
-git-status - Show the working tree status
----------------------------------
+# git-status - Show the working tree status
 >git status 
-==============================
-==============================
 
 
+# Pushing to a remote
+>git push  <REMOTENAME> <BRANCHNAME> 
+# To push local changes to online repository.
+>git push origin master
 
-==============================
-==============================
-
-
-
-==============================
-==============================
-
+# How to
+>git init
+>git add README.md
+>git commit -m "first commit"
+>git remote add origin https://github.com/CeasarMwangi/VueJS_GettingStarted.git
+# Verifies the new remote URL
+>git remote -v
+>git push -u origin master
 
 # todo-app
 
@@ -106,4 +113,4 @@ npm run e2e
 npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Checkout the [guide](http://.../.../) and [docs for vue-loader](http://.../...).
