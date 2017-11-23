@@ -75,14 +75,22 @@ new Vue({
 # To push local changes to online repository.
 >git push origin master
 
-# How to
->git init
->git add README.md
->git commit -m "first commit"
->git remote add origin https://github.com/CeasarMwangi/VueJS_GettingStarted.git
+## How to
+``` bash
+#
+git init
+#
+git add README.md
+#
+git commit -m "first commit"
+#
+git remote add origin https://github.com/CeasarMwangi/VueJS_GettingStarted.git
 # Verifies the new remote URL
->git remote -v
->git push -u origin master
+git remote -v
+#
+git push -u origin master
+
+```
 
 # todo-app
 
