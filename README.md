@@ -47,34 +47,48 @@ new Vue({
 
 
 # git
->git init
->git clone
+``` bash
+#
+git init
+
+#
+git clone
 
 # git-commit - Record changes to the repository
-
->git commit
->git-commit 
->git commit -m "message"
+git commit
+git commit -m "message"
 
 # This line will add and commit all changed and added files to repository.
->git add . && git commit -am "comment"
+git add . && git commit -am "comment"
+```
 
-
-# ADDING FILES
->git add .
->git add hello.py
->git add Documentation/\*.txt
->git add git-\*.txt
-
+#ADDING FILES
+``` bash
+#
+git add .
+#
+git add hello.py
+#
+git add Documentation/\*.txt
+#
+git add git-\*.txt
+```
 # git-status - Show the working tree status
->git status 
-
+``` bash
+#
+git status 
+```
 
 # Pushing to a remote
->git push  <REMOTENAME> <BRANCHNAME> 
+``` bash
+#
+git push  <REMOTENAME> <BRANCHNAME> 
+```
 # To push local changes to online repository.
->git push origin master
-
+``` bash
+#To push local changes to online repository.
+git push origin master
+```
 ## How to
 ``` bash
 #
