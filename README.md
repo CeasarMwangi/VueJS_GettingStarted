@@ -1,6 +1,12 @@
 
 cd C:/xampp/htdocs/VueJS_PROJECTS/KanjaVueJS_GettingStarted
 
+#
+git add . && git commit -m "It begins."
+
+#
+git push origin master
+
 Vue Data and Methods
 ===============================
 When a Vue instance is created, it adds all the properties found in its data object to Vue’s reactivity system. 
@@ -218,3 +224,15 @@ Mustaches cannot be used inside HTML attributes. Instead, use a v-bind directive
 In the case of boolean attributes, where their mere existence implies true, v-bind works a little differently. In this example:
 <button v-bind:disabled="isButtonDisabled">Button</button>
 If isButtonDisabled has the value of null, undefined, or false, the disabled attribute will not even be included in the rendered <button> element.
+
+# ===========================================
+# Computed Properties and Watchers
+# ===========================================
+Keep your template maintainable and reusable
+Keep your template simple and declarative.
+Consider when you want to include the data in your template in more than place/template.
+Do not put too much logic in the templates only simple expressions. 
+Use computed property for any complex logic.
+
+# Computed Caching vs Methods
+## Reactive dependency

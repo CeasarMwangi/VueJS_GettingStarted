@@ -162,6 +162,25 @@ The v- prefix serves as a visual cue for identifying Vue-specific attributes in 
 <!-- shorthand -->
 <a @click="doSomething"> ... shorthand syntax for v-on:click= is @click=</a>
 </p>
+<div>
+  <h3>Example of Computed properties</h3>
+<p>The computed getter function should not have any side effects. This will ensure it is easier to test and understand.</p>
+  <p>NB: <b>The value of getComputedReversedMessage is dependent on the value of originalmessage</b></p>
+  <div id="example">
+  <p>Original message: "{{ originalMessage }}"</p>
+  <!-- NB: getReversedMessage is a computed property  -->
+  <p>Computed reversed message: "{{ getReversedMessage }}"</p>
+</div>
+</div>
+<div>
+  <h3>Method VS Computed property</h3>
+  <p>Instead of a computed property, we can define the same functionality as a method instead. . However, the difference is that computed properties are cached based on their dependencies(reactive dependency). A computed property will only re-evaluate when some of its dependencies have changed. This means as long as message has not changed, multiple access to the getReversedMessage computed property will immediately return the previously computed result without having to run the function again.</p>
+  <p>In comparison, a method invocation will always run the function whenever a re-render happens.(or whenever its invoked)</p>
+</div>
+<div>
+<h3>Computed vs Watched Property</h3>
+
+</div>
   </div><!-- END example -->
 
 
@@ -229,6 +248,7 @@ Vue.component('hook-item', {
   template: '<li>{{ hook.text }}</li>'
 })
 var data = {
+originalMessage: 'Hello',
  a: 1,
 hookList: [
       { id: 0, text: 'beforeCreate' },
@@ -291,6 +311,19 @@ var vm2 = new Vue({
     },
     onSubmit:function(){
       alert('YOU HAVE SUBMITED THE FORM!!!!!!');
+    }
+  },
+  computed: {
+    // a computed getter (a computed property getReversedMessage)
+    //This function is used as the getter function for the computed property
+    //vm2.getReversedMessage
+    //NB: The value of getReversedMessage dependent on the value of originalMessage
+    getReversedMessage: function () {
+      // `this` points to the vm2 instance
+      this.originalMessage = 'Goodbye';
+      console.log("this.originalMessage is: "+this.originalMessage);
+      return this.originalMessage.split('').reverse().join('');
+      
     }
   }
 })
